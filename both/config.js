@@ -1,4 +1,5 @@
 AccountsTemplates.configure({
+
     // Behavior
     confirmPassword: true,
     enablePasswordChange: true,
@@ -28,6 +29,21 @@ AccountsTemplates.configure({
     termsUrl: 'terms-of-use',
 
     // Redirects
-    homeRoutePath: '/',
+    homeRoutePath: '/home',
     redirectTimeout: 4000,
+});
+
+AccountsTemplates.addField({
+    _id: "pilotorcustomer",
+    type: "radio",
+    displayName: "Are You A Pilot Or Looking For A Service",
+    select: [
+        {
+        text: "Pilot",
+        value: "aa",
+      }, {
+        text: "Customer",
+        value: "bb",
+      },
+    ],
 });

@@ -1,0 +1,12 @@
+<template name="map">
+	{{> navbarloggedin}}
+	  <div style="width: 800px; height: 500px; margin: 40px auto;" id="map" class="map-container">
+	    {{#unless geolocationError}}
+	      {{> googleMap name="map" options=mapOptions}}
+	    {{else}}
+	      Geolocation failed: {{geolocationError}}
+	    {{/unless}}
+	  </div>
+	<br>
+	<h3 align="center">Reports</h3>
+</template>
