@@ -29,7 +29,7 @@ AccountsTemplates.configure({
     termsUrl: 'terms-of-use',
 
     // Redirects
-    homeRoutePath: '/home',
+    homeRoutePath: '/map',
     redirectTimeout: 4000,
 });
 
