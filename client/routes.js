@@ -1,27 +1,63 @@
 Router.route('/', function () {
-  this.render('index.html');
+  Router.go('home')
 });
 
-Router.route('/map');
 Router.route('/about');
 Router.route('/contact');
 Router.route('/home');
 Router.route('/services');
-Router.route('/report1');
-Router.route('/jobs');
-Router.route('/account');
+AccountsTemplates.configureRoute('signIn', {
+	name: 'login'
+});
 
-// we want to be sure that the user is logging in
-// for all routes but login
-Router.route('/login',
-              { name: 'login' });
+Router.route('/map', {
+	name: 'map',
+	template: 'map',
+	onBeforeAction: function () {
+	  var currentUser = Meteor.userId();
+	  if (currentUser) {
+	    this.next();
+	  } else {
+	    this.render("login");
+	  }
+	}
+});
 
-var requireLogin = function(){
-  if (! Meteor.user() ) {
-    this.redirect('login');
-  } else {
-    this.next();
-  }
-}
+Router.route('/report1', {
+		name: 'report1',
+	template: 'report1',
+	onBeforeAction: function () {
+	  var currentUser = Meteor.userId();
+	  if (currentUser) {
+	    this.next();
+	  } else {
+	    this.render("login");
+	  }
+	}
+});
 
-Router.onBeforeAction(requireLogin, {except: ['login']});
+Router.route('/jobs', {
+		name: 'jobs',
+	template: 'jobs',
+	onBeforeAction: function () {
+	  var currentUser = Meteor.userId();
+	  if (currentUser) {
+	    this.next();
+	  } else {
+	    this.render("login");
+	  }
+	}
+});
+
+Router.route('/account', {
+	name: 'account',
+	template: 'account',
+	onBeforeAction: function () {
+	  var currentUser = Meteor.userId();
+	  if (currentUser) {
+	    this.next();
+	  } else {
+	    this.render("login");
+	  }
+	}
+});
