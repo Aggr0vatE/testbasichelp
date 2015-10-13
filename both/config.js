@@ -1,3 +1,5 @@
+UserRecords = new Mongo.Collection("userrecords");
+
 AccountsTemplates.configure({
 
     // Behavior
@@ -14,7 +16,7 @@ AccountsTemplates.configure({
     showForgotPasswordLink: true,
     showLabels: true,
     showPlaceholders: true,
-    showResendVerificationEmailLink: false,
+    showResendVerificationEmailLink: true,
 
     // Client-side Validation
     continuousValidation: false,
@@ -33,10 +35,20 @@ AccountsTemplates.configure({
     redirectTimeout: 4000,
 });
 
+AccountsTemplates.addField({  
+    _id: "address",
+    type: "text",
+    displayName: "Address",
+    placeholder: {
+        signUp: "Your Address"
+    },
+});
+
 AccountsTemplates.addField({
     _id: "pilotorcustomer",
     type: "radio",
     displayName: "Are You A Pilot Or Looking For A Service",
+    required: true,
     select: [
         {
         text: "Pilot",
@@ -47,3 +59,5 @@ AccountsTemplates.addField({
       },
     ],
 });
+
+

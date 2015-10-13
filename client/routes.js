@@ -4,7 +4,6 @@ Router.route('/', function () {
 
 Router.route('/about');
 Router.route('/contact');
-Router.route('/home');
 Router.route('/services');
 AccountsTemplates.configureRoute('signIn', {
 	name: 'login'
@@ -56,6 +55,20 @@ Router.route('/account', {
 	  var currentUser = Meteor.userId();
 	  if (currentUser) {
 	    this.next();
+	  } else {
+	    this.render("login");
+	  }
+	}
+});
+
+Router.route('/home', {
+	name: 'home',
+	template: 'home',
+	onBeforeAction: function () {
+	  var currentUser = Meteor.userId();
+	  if (currentUser) {
+	    this.next();
+	    Router.go("map");
 	  } else {
 	    this.render("login");
 	  }

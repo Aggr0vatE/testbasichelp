@@ -1,12 +1,16 @@
 <template name="map">
 	{{> navbarloggedin}}
-	  <div style="width: 800px; height: 500px; margin: 40px auto;" id="map" class="map-container">
+	<br>
+	<h3 align="center">Welcome, Zenith Winery</h3> 
+	<br>
+	<h4 align="center">Reports For 9-1-2015</h4> 
+	<br>
+	<img src="weather.png" align="right" style="margin-top: 80px; margin-right: 175px">
+	  <div style="width: 800px; height: 500px; margin: 40px; margin-left: 175px" id="map" class="map-container">
 	    {{#unless geolocationError}}
 	      {{> googleMap name="map" options=mapOptions}}
 	    {{else}}
 	      Geolocation failed: {{geolocationError}}
 	    {{/unless}}
 	  </div>
-	<br>
-	<h3 align="center">Reports</h3>
 </template>
